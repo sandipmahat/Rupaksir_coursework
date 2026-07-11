@@ -1,0 +1,10 @@
+backend
+frontend
+*.o
+*.out
+/tmp/privsep_auth.sock
+*.log
+.vscode/
+.idea/
+*.swp
+.DS_Store

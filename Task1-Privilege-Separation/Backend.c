@@ -424,6 +424,11 @@ int main(void)
     int server_fd = -1;
     int result = EXIT_FAILURE;
 
+    /* Line-buffer stdout so the privilege-drop status lines are visible
+     * immediately, even when the backend's output is redirected to a log
+     * file or pipe (e.g. under the test harness). */
+    setvbuf(stdout, NULL, _IOLBF, 0);
+
     if (choose_unprivileged_identity(&target_uid, &target_gid) == -1) {
         return EXIT_FAILURE;
     }
