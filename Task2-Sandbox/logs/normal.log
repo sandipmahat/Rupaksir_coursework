@@ -1,0 +1,15 @@
+[   0.000s] SANDBOX   target: ./test_normal
+[   0.000s] SANDBOX   limits: wall=3.0s cpu=2.0s rss=65536KB
+[   0.000s] SANDBOX   forked child pid=9494, execve issued
+[   0.000s] SAMPLER   armed: cpu limit 2.0s, rss limit 65536 KB
+[   0.000s] WATCHDOG  armed: wall-clock limit 3.0s
+[normal] starting, will do a little work then exit
+[normal] done
+[   1.004s] REAPER    child exited normally, code=0
+[   1.019s] REPORT    ----------------------------------------
+[   1.019s] REPORT    verdict      : COMPLETED
+[   1.019s] REPORT    wall time    : 1.019s
+[   1.019s] REPORT    cpu (rusage) : 0.002s user + 0.000s sys
+[   1.019s] REPORT    peak rss     : 1492 KB
+[   1.019s] REPORT    exit code    : 0
+[   1.019s] REPORT    ----------------------------------------

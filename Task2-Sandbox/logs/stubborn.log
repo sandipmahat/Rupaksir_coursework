@@ -1,0 +1,18 @@
+[   0.000s] SANDBOX   target: ./test_stubborn
+[   0.000s] SANDBOX   limits: wall=2.0s cpu=5.0s rss=65536KB
+[   0.000s] SANDBOX   forked child pid=9541, execve issued
+[   0.000s] WATCHDOG  armed: wall-clock limit 2.0s
+[   0.000s] SAMPLER   armed: cpu limit 5.0s, rss limit 65536 KB
+[stubborn] SIGTERM handler installed, looping forever
+[   2.009s] ENFORCE   policy violation: wall-clock limit exceeded -- terminating child 9541
+[   2.010s] SIGNAL    SIGTERM sent to process group 9541
+[stubborn] caught SIGTERM -- ignoring it, you cannot stop me
+[   2.578s] SIGNAL    grace expired -- SIGKILL sent (uncatchable)
+[   2.578s] REAPER    child terminated by signal 9 (Killed)
+[   2.630s] REPORT    ----------------------------------------
+[   2.630s] REPORT    verdict      : KILLED_WALLCLOCK
+[   2.630s] REPORT    wall time    : 2.630s
+[   2.630s] REPORT    cpu (rusage) : 0.002s user + 0.000s sys
+[   2.630s] REPORT    peak rss     : 1280 KB
+[   2.630s] REPORT    killed by    : signal 9 (Killed)
+[   2.630s] REPORT    ----------------------------------------

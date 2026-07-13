@@ -1,0 +1,18 @@
+[   0.000s] SANDBOX   target: ./test_cpu
+[   0.000s] SANDBOX   limits: wall=10.0s cpu=1.0s rss=65536KB
+[   0.000s] SANDBOX   forked child pid=9528, execve issued
+[   0.000s] SAMPLER   armed: cpu limit 1.0s, rss limit 65536 KB
+[   0.000s] WATCHDOG  armed: wall-clock limit 10.0s
+[cpu] spinning to burn CPU
+[   1.024s] SAMPLER   cpu=1010ms rss=1288KB
+[   1.024s] ENFORCE   policy violation: CPU-time limit exceeded -- terminating child 9528
+[   1.024s] SIGNAL    SIGTERM sent to process group 9528
+[   1.025s] REAPER    child terminated by signal 15 (Terminated)
+[   1.034s] SIGNAL    child exited after SIGTERM (grace honoured)
+[   1.034s] REPORT    ----------------------------------------
+[   1.034s] REPORT    verdict      : KILLED_CPU
+[   1.034s] REPORT    wall time    : 1.034s
+[   1.034s] REPORT    cpu (rusage) : 1.023s user + 0.000s sys
+[   1.034s] REPORT    peak rss     : 1288 KB
+[   1.034s] REPORT    killed by    : signal 15 (Terminated)
+[   1.034s] REPORT    ----------------------------------------

@@ -1,0 +1,27 @@
+==================================================================
+ BROKEN: claim_verdict() uses check-then-set (no atomicity)
+==================================================================
+  run 1:  ENFORCE lines = 2   <-- RACE: child killed twice
+  run 2:  ENFORCE lines = 2   <-- RACE: child killed twice
+  run 3:  ENFORCE lines = 2   <-- RACE: child killed twice
+  run 4:  ENFORCE lines = 2   <-- RACE: child killed twice
+  run 5:  ENFORCE lines = 2   <-- RACE: child killed twice
+  run 6:  ENFORCE lines = 2   <-- RACE: child killed twice
+  run 7:  ENFORCE lines = 2   <-- RACE: child killed twice
+  run 8:  ENFORCE lines = 2   <-- RACE: child killed twice
+  --> races observed: 8 / 8
+
+==================================================================
+ FIXED: claim_verdict() uses atomic_compare_exchange_strong()
+==================================================================
+  run 1:  ENFORCE lines = 1
+  run 2:  ENFORCE lines = 1
+  run 3:  ENFORCE lines = 1
+  run 4:  ENFORCE lines = 1
+  run 5:  ENFORCE lines = 1
+  run 6:  ENFORCE lines = 1
+  run 7:  ENFORCE lines = 1
+  run 8:  ENFORCE lines = 1
+  --> races observed: 0 / 8
+
+Exactly one thread may claim the verdict. That is what the CAS buys.

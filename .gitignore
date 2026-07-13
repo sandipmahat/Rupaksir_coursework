@@ -8,3 +8,7 @@ frontend
 .idea/
 *.swp
 .DS_Store
+
+# Task 2 execution evidence (a required deliverable)
+!Task2-Sandbox/logs/
+!Task2-Sandbox/logs/*.log
