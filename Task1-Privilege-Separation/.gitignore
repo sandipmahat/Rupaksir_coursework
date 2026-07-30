@@ -1,0 +1,7 @@
+# build artefacts
+backend
+frontend
+*.o
+# runtime
+/tmp/privsep_auth.sock
+*.log

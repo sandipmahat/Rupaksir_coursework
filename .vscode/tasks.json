@@ -1,0 +1,77 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build (make all)",
+            "type": "shell",
+            "command": "make",
+            "args": ["all"],
+            "options": {
+                "cwd": "${workspaceFolder}/Task1-Privilege-Separation"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile backend and frontend with gcc -O2 -Wall -Wextra."
+        },
+        {
+            "label": "build backend",
+            "type": "shell",
+            "command": "make",
+            "args": ["backend"],
+            "options": {
+                "cwd": "${workspaceFolder}/Task1-Privilege-Separation"
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile only the privileged backend."
+        },
+        {
+            "label": "build frontend",
+            "type": "shell",
+            "command": "make",
+            "args": ["frontend"],
+            "options": {
+                "cwd": "${workspaceFolder}/Task1-Privilege-Separation"
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compile only the unprivileged frontend."
+        },
+        {
+            "label": "run tests (needs sudo)",
+            "type": "shell",
+            "command": "sudo",
+            "args": ["./run_tests.sh"],
+            "options": {
+                "cwd": "${workspaceFolder}/Task1-Privilege-Separation"
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "dependsOn": ["build (make all)"],
+            "detail": "Run the full automated harness. Requires root so the backend can drop privileges."
+        },
+        {
+            "label": "disassembly evidence",
+            "type": "shell",
+            "command": "make",
+            "args": ["disassembly"],
+            "options": {
+                "cwd": "${workspaceFolder}/Task1-Privilege-Separation"
+            },
+            "detail": "Show that secure_wipe / explicit_bzero survives -O2."
+        },
+        {
+            "label": "clean",
+            "type": "shell",
+            "command": "make",
+            "args": ["clean"],
+            "options": {
+                "cwd": "${workspaceFolder}/Task1-Privilege-Separation"
+            },
+            "detail": "Remove build artefacts."
+        }
+    ]
+}

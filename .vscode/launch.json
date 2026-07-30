@@ -1,0 +1,50 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug backend (run as root)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Task1-Privilege-Separation/backend",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/Task1-Privilege-Separation",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build backend",
+            "miDebuggerServerAddress": "",
+            "additionalSOLibSearchPath": "",
+            "comment": "The backend must be started as root so it can drop privileges. Launch it from a root terminal, or run 'sudo gdb ./backend' outside VS Code if the extension cannot elevate."
+        },
+        {
+            "name": "Debug frontend",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/Task1-Privilege-Separation/frontend",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/Task1-Privilege-Separation",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build frontend"
+        }
+    ]
+}
