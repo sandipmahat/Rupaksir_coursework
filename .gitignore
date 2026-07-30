@@ -4,7 +4,6 @@ frontend
 *.out
 /tmp/privsep_auth.sock
 *.log
-.vscode/
 .idea/
 *.swp
 .DS_Store
@@ -12,3 +11,15 @@ frontend
 # Task 2 execution evidence (a required deliverable)
 !Task2-Sandbox/logs/
 !Task2-Sandbox/logs/*.log
+
+# Word temp lock files
+~$*.docx
+
+# Old git directory left behind while rebuilding commit history
+.git_old_*/
+
+# Superseded draft versions of the merged report (final kept below)
+Task_1_2_Privilege_Separation_and_Sandbox_Report_v2.docx
+Task_1_2_Privilege_Separation_and_Sandbox_Report_v3.docx
+Task_1_2_Privilege_Separation_and_Sandbox_Report_v4.docx
+Task_1_2_Privilege_Separation_and_Sandbox_Report_v5.docx
