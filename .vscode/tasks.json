@@ -4,37 +4,33 @@
         {
             "label": "build (make all)",
             "type": "shell",
-            "command": "make",
-            "args": ["all"],
-            "options": {
-                "cwd": "${workspaceFolder}/Task1-Privilege-Separation"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
+            "command": "bash.exe",
+            "args": [
+                "-lc",
+                "cd \"$(wslpath -a '${workspaceFolder}/Task1-Privilege-Separation')\" && make all"
+            ],
             "problemMatcher": ["$gcc"],
             "detail": "Compile backend and frontend with gcc -O2 -Wall -Wextra."
         },
         {
             "label": "build backend",
             "type": "shell",
-            "command": "make",
-            "args": ["backend"],
-            "options": {
-                "cwd": "${workspaceFolder}/Task1-Privilege-Separation"
-            },
+            "command": "bash.exe",
+            "args": [
+                "-lc",
+                "cd \"$(wslpath -a '${workspaceFolder}/Task1-Privilege-Separation')\" && make backend"
+            ],
             "problemMatcher": ["$gcc"],
             "detail": "Compile only the privileged backend."
         },
         {
             "label": "build frontend",
             "type": "shell",
-            "command": "make",
-            "args": ["frontend"],
-            "options": {
-                "cwd": "${workspaceFolder}/Task1-Privilege-Separation"
-            },
+            "command": "bash.exe",
+            "args": [
+                "-lc",
+                "cd \"$(wslpath -a '${workspaceFolder}/Task1-Privilege-Separation')\" && make frontend"
+            ],
             "problemMatcher": ["$gcc"],
             "detail": "Compile only the unprivileged frontend."
         },
@@ -56,21 +52,21 @@
         {
             "label": "disassembly evidence",
             "type": "shell",
-            "command": "make",
-            "args": ["disassembly"],
-            "options": {
-                "cwd": "${workspaceFolder}/Task1-Privilege-Separation"
-            },
+            "command": "bash.exe",
+            "args": [
+                "-lc",
+                "cd \"$(wslpath -a '${workspaceFolder}/Task1-Privilege-Separation')\" && make disassembly"
+            ],
             "detail": "Show that secure_wipe / explicit_bzero survives -O2."
         },
         {
             "label": "clean",
             "type": "shell",
-            "command": "make",
-            "args": ["clean"],
-            "options": {
-                "cwd": "${workspaceFolder}/Task1-Privilege-Separation"
-            },
+            "command": "bash.exe",
+            "args": [
+                "-lc",
+                "cd \"$(wslpath -a '${workspaceFolder}/Task1-Privilege-Separation')\" && make clean"
+            ],
             "detail": "Remove build artefacts."
         }
     ]
