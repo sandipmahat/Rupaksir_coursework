@@ -39,9 +39,22 @@ cp backend frontend "$RUNDIR"/
 chmod 755 "$RUNDIR" "$RUNDIR"/backend "$RUNDIR"/frontend
 echo "  built backend + frontend"
 
-# Determine an unprivileged uid to run the frontend as.
+# Determine an unprivileged uid to run the frontend as. This must mirror
+# Backend.c's choose_unprivileged_identity() exactly, or the frontend and
+# the socket the backend secures end up owned by different UIDs: under
+# sudo, SUDO_UID identifies the invoking user and Backend.c prefers it over
+# "nobody" (see the comment above choose_unprivileged_identity in Backend.c),
+# so this script must check SUDO_UID first too.
+is_uint() { case "$1" in ''|*[!0-9]*) return 1 ;; *) return 0 ;; esac; }
+
 if [ "$(id -u)" = 0 ]; then
-    if id -u nobody >/dev/null 2>&1; then DUID=$(id -u nobody); DGID=$(id -g nobody); else DUID=1000; DGID=1000; fi
+    if is_uint "${SUDO_UID:-}" && is_uint "${SUDO_GID:-}" && [ "${SUDO_UID:-0}" -gt 0 ]; then
+        DUID="$SUDO_UID"; DGID="$SUDO_GID"
+    elif id -u nobody >/dev/null 2>&1; then
+        DUID=$(id -u nobody); DGID=$(id -g nobody)
+    else
+        DUID=1000; DGID=1000
+    fi
     RUN_AS() { setpriv --reuid "$DUID" --regid "$DGID" --clear-groups "$@"; }
     echo "  frontend will run as uid=$DUID (backend drops to the same)"
 else
